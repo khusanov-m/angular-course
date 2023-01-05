@@ -1,0 +1,14 @@
+<a href="#" class="list-group-item clearfix" (click)="onSelected()">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ rec.name }}</h4>
+    <p class="list-group-item-text">{{ rec.description }}</p>
+  </div>
+  <span class="pull-right">
+    <img
+      [src]="rec.imagePath"
+      alt="{{ rec.name }}"
+      class="img-responsive"
+      style="max-height: 50px"
+    />
+  </span>
+</a>
