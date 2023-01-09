@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -28,7 +29,8 @@ export class AuthService {
   singup(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDUceNSYftp612M150e0ueutzCMUcL42kY',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
+          environment.firebaseAPIKey,
         { email, password, returnSecureToken: true }
       )
       .pipe(
@@ -47,7 +49,8 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDUceNSYftp612M150e0ueutzCMUcL42kY',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
+          environment.firebaseAPIKey,
         { email, password, returnSecureToken: true }
       )
       .pipe(

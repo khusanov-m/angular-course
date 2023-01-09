@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import * as AuthActions from './auth.actions';
 import { User } from '../user.model';
 import { AuthService } from './../auth.service';
+import { environment } from 'src/environments/environment';
 
 interface AuthResponseData {
   kind: string;
@@ -64,7 +65,7 @@ export class AuthEffects {
       switchMap((authData: AuthActions.LoginStart) => {
         return this.http
           .post<AuthResponseData>(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDUceNSYftp612M150e0ueutzCMUcL42kY',
+            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseAPIKey,
             {
               email: authData.payload.email,
               password: authData.payload.password,
@@ -97,7 +98,7 @@ export class AuthEffects {
       switchMap((authData: AuthActions.LoginStart) => {
         return this.http
           .post<AuthResponseData>(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDUceNSYftp612M150e0ueutzCMUcL42kY',
+            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseAPIKey,
             {
               email: authData.payload.email,
               password: authData.payload.password,
